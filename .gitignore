@@ -1,0 +1,7 @@
+# .gitignore file
+
+# Ignore all PGPT-BASIC-*.py files
+PGPT-BASIC-*.py
+
+# Ignore all JSON files
+*.json
