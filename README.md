@@ -12,15 +12,15 @@ PGPT-BASIC is a simple chat and image generation app using Python's Tkinter libr
 
 To run the app locally:
 
-```bash
+bash
 python PGPT-BASIC.py
-```
+
 
 Make sure to install the dependencies:
 
-```bash
+bash
 pip install -r requirements.txt
-```
+
 
 ## License
 
