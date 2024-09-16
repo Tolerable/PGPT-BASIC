@@ -23,7 +23,7 @@ class ChatImageApp:
         # Create the layout
         self.create_widgets()
 
-        # Add a placeholder for the image at the start
+        # Add the PGPT-BASIC.png image at the start
         self.display_placeholder_image()
 
     def create_widgets(self):
@@ -58,6 +58,27 @@ class ChatImageApp:
         self.entry_scrollbar = tk.Scrollbar(self.entry_frame, command=self.prompt_text.yview)
         self.entry_scrollbar.pack(side='right', fill='y')
         self.prompt_text['yscrollcommand'] = self.entry_scrollbar.set
+
+    def display_placeholder_image(self):
+        """
+        Display the custom PGPT-BASIC.png image at startup.
+        """
+        try:
+            image = Image.open("PGPT-BASIC.png")  # Load your custom PNG file
+            max_size = (540, 540)  # Resize it to fit the display area
+            image.thumbnail(max_size, Image.LANCZOS)
+
+            # Convert the image to PhotoImage and display it
+            self.photo_image = ImageTk.PhotoImage(image)
+            self.image_label.config(image=self.photo_image)
+            self.image = image  # Store the image
+
+        except Exception as e:
+            print(f"Error loading image: {e}")
+            # If there's an issue, fall back to the grey placeholder image
+            placeholder_image = Image.new('RGB', (540, 540), color='lightgrey')
+            self.photo_image = ImageTk.PhotoImage(placeholder_image)
+            self.image_label.config(image=self.photo_image)
 
     def newline_in_entry(self, event):
         self.prompt_text.insert(tk.INSERT, "\n")
@@ -272,14 +293,6 @@ class ChatImageApp:
         self.photo_image = ImageTk.PhotoImage(image)
         self.image_label.config(image=self.photo_image)
         self.image = image  # Store the image
-
-    def display_placeholder_image(self):
-        """
-        Display a blank placeholder image until a new image is generated.
-        """
-        placeholder_image = Image.new('RGB', (540, 540), color='lightgrey')
-        self.photo_image = ImageTk.PhotoImage(placeholder_image)
-        self.image_label.config(image=self.photo_image)
 
     def copy_image_to_clipboard(self, event):
         """
