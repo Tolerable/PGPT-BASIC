@@ -1,3 +1,5 @@
+![PGPT-BASIC LOGO](https://github.com/Tolerable/PGPT-BASIC/blob/main/PGPT-BASIC.png)
+
 # PGPT-BASIC
 
 PGPT-BASIC is a simple chat and image generation app using Python's Tkinter library. It interacts with AI to generate images based on textual prompts and handles user chat in an easy-to-use interface.
